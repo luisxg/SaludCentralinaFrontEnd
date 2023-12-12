@@ -1,0 +1,46 @@
+<div class="custom-toolbar" color="accent">
+    <span class="custom-title">{{accion}}</span>
+  </div>
+  
+  <form [formGroup]="form" (submit)="operate()">
+    <div class="container">
+      <mat-form-field class="form-field">
+        <mat-label>FirstName</mat-label>
+        <input
+          matInput
+          placeholder="Luis"
+          formControlName="firstName"
+          required
+        />
+        <mat-error *ngIf="f['firstName'].invalid">{{getErrorMessage('f')}}</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-field">
+          <mat-label>LastName</mat-label>
+          <input
+            matInput
+            placeholder="Gonzalez"
+            formControlName="lastName"
+            required
+          />
+          <mat-error *ngIf="f['lastName'].invalid">{{getErrorMessage('l')}}</mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="form-field">
+          <mat-label>CI</mat-label>
+          <input
+            matInput
+            placeholder="0948392910"
+            formControlName="ci"
+            required
+            maxlength="10"
+          />
+          <mat-error *ngIf="f['ci'].invalid">{{getErrorMessage('d')}}</mat-error>
+        </mat-form-field>
+    <div class="actions">
+      <button mat-raised-button color="primary">Done</button>
+      <button mat-raised-button color="warn" (click)="close()">Cancel</button>
+    </div>
+  </div>
+  </form>
+  

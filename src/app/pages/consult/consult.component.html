@@ -1,0 +1,73 @@
+<mat-toolbar color="accent">
+    <h2 class="custom-title">Registrar Consulta</h2>
+</mat-toolbar>
+
+<div class="container">
+  <div class="input-row">
+    <mat-form-field>
+      <mat-select placeholder="Seleccionar Paciente" [(ngModel)]="idPatientSelected">
+        <mat-option *ngFor="let p of patients" [value]="p.idPatient">
+          {{ p.firstName }} {{ p.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Seleccionar Medico" [(ngModel)]="idMedicSelected">
+        <mat-option *ngFor="let m of medics$ | async" [value]="m.idMedic">
+          {{ m.firstName }} {{ m.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccionar Fecha</mat-label>
+    <input matInput [matDatepicker]="picker" [max]="maxDate" [(ngModel)]="dateSelected" />
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Diagnostico" [(ngModel)]="diagnosis">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Tratamiento" [(ngModel)]="treatment">
+  </mat-form-field>
+
+  <mat-expansion-panel *ngFor="let ld of listDetails; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{i + 1}} {{ld.diagnosis}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Ver Tratamiento
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Treatment" value="{{ld.treatment}}"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click)="removeDetail(i)">
+      <span>Remove</span>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-expansion-panel>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="addDetail()">
+    <span>Agregar Detalle</span>
+    <mat-icon>local_hospital</mat-icon>
+  </button>
+
+  <button mat-raised-button color="accent" (click)="saveConsult()">
+    <span>Guardar Consulta</span>
+    <mat-icon>save</mat-icon>
+  </button>
+  </div>
+  
+
+</div>

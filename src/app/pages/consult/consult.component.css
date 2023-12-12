@@ -1,0 +1,36 @@
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; 
+  }
+  .custom-title {
+    font-size: 25px; 
+    font-weight: lighter;
+}
+.container {
+    max-width: 600px;
+    margin: 50px auto; 
+    padding: 20px;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  mat-form-field {
+    width: 100%; 
+    margin-bottom: 16px; 
+  }
+  
+  .input-row {
+    display: flex; 
+    justify-content: space-between; 
+  }
+  
+  .input-row mat-form-field {
+    margin: 0px 10px;
+  }
+  
+  .actions{
+    display: flex;
+    justify-content: space-between;
+  }
